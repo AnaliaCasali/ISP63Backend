@@ -1,6 +1,6 @@
 package com.institucional.WebIsp63.DTO;
 
-import jakarta.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,6 +15,5 @@ public class CarreraDTO {
     String sede;
     int numeroPlan;
     String campoOcupacional;
-
     String horario;
 }
