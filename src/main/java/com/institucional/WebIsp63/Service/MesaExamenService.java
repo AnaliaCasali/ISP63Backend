@@ -61,4 +61,8 @@ public class MesaExamenService {
         mesaExamenRepository.save(mesaExamen);
         return mesaExamenDTO;
     }
+
+    public void delete (long id){
+        mesaExamenRepository.deleteById(id);
+    }
 }
