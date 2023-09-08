@@ -1,6 +1,7 @@
 package com.institucional.WebIsp63.DTO;
 
 import com.institucional.WebIsp63.Entity.Asignatura;
+import com.institucional.WebIsp63.Entity.Turno;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ public class MesaExamenDTO {
 
     long id;
     LocalDate fecha;
-    String turno;
+    Turno turno;
     Asignatura asignatura;
     int horario;
     long tribunal;

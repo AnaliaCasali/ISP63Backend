@@ -22,8 +22,10 @@ public class MesaExamen {
     private long id;
     @Column(name = "fecha")
     private LocalDate fecha;
-    @Column(name = "turno")
-    private String turno;
+
+    @ManyToOne
+   @JoinColumn(name = "turno_id")
+    private Turno turno;
 
 
     @Column(name = "horario")

@@ -30,4 +30,8 @@ public class InscripcionController {
     public InscripcionDTO modificar(@PathVariable long id, @RequestBody InscripcionDTO inscripcionDTO){
         return inscripcionService.modificar(id,inscripcionDTO);
     }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id){
+        inscripcionService.delete(id);
+    }
 }

@@ -32,4 +32,9 @@ public class AsignaturaController {
         return asignaturaService.modificarAsignatura(id,asignaturaDTO);
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id){
+        asignaturaService.delete(id);
+    }
+
 }

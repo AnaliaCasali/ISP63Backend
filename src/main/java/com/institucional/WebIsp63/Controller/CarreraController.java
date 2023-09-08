@@ -34,5 +34,10 @@ public class CarreraController {
         return carreraService.modificarCarrera(id, carreraDTO);
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id){
+        carreraService.Delete(id);
+    }
+
 
 }

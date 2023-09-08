@@ -75,7 +75,7 @@ public class AsignaturaService {
 
     }
 
-    public void delte(long id) {
+    public void delete(long id) {
         asignaturaRepository.deleteById(id);
     }
 }

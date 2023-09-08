@@ -32,5 +32,9 @@ public class MesaExamenController {
     public MesaExamenDTO modificar(@PathVariable long id, @RequestBody MesaExamenDTO mesaExamenDTO){
         return  mesaExamenService.modifcarMesa(id,mesaExamenDTO);
     }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id){
+        mesaExamenService.delete(id);
+    }
 
 }

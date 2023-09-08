@@ -58,7 +58,7 @@ public class InscripcionService {
 
     }
 
-    public void delte(long id){
+    public void delete(long id){
         inscripcionRepository.deleteById(id);
     }
 
