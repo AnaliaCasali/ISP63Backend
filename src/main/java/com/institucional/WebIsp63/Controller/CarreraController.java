@@ -2,7 +2,10 @@ package com.institucional.WebIsp63.Controller;
 
 import com.institucional.WebIsp63.DTO.CarreraDTO;
 
+import com.institucional.WebIsp63.Exception.ResourceNotFoundException;
+
 import com.institucional.WebIsp63.Service.CarreraService;
+import com.institucional.WebIsp63.Service.CarreraServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,12 +14,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/carrera")
 public class CarreraController {
+
     @Autowired
-    CarreraService carreraService = new CarreraService();
+    CarreraServiceImpl carreraService ;
 
     @GetMapping
-    public List<CarreraDTO> finAll() {
-        return carreraService.findAll();
+    public List<CarreraDTO> finAll(String sede) throws ResourceNotFoundException {
+        return carreraService.findAll(sede);
     }
 
     @PostMapping
@@ -25,7 +29,7 @@ public class CarreraController {
     }
 
     @GetMapping ("/{id}")
-    public CarreraDTO findId(@PathVariable long id) {
+    public CarreraDTO findId(@PathVariable long id) throws ResourceNotFoundException {
         return carreraService.finId(id);
     }
 

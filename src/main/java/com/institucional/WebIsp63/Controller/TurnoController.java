@@ -1,8 +1,8 @@
 package com.institucional.WebIsp63.Controller;
 
 import com.institucional.WebIsp63.DTO.TurnoDTO;
-import com.institucional.WebIsp63.Service.TurnoService;
-import org.hibernate.type.descriptor.jdbc.TimestampUtcAsJdbcTimestampJdbcType;
+import com.institucional.WebIsp63.Exception.ResourceNotFoundException;
+import com.institucional.WebIsp63.Service.TurnoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +12,15 @@ import java.util.List;
 @RequestMapping("/turno")
 public class TurnoController {
     @Autowired
-    TurnoService turnoService = new TurnoService();
+    TurnoServiceImpl turnoService;
 
     @GetMapping
-    public List<TurnoDTO> findAll() {
+    public List<TurnoDTO> findAll()  throws ResourceNotFoundException {
         return turnoService.findAll();
     }
 
     @GetMapping("/{id}")
-    public TurnoDTO findId(@PathVariable long id) {
+    public TurnoDTO findId(@PathVariable long id)  throws ResourceNotFoundException {
         return turnoService.findId(id);
     }
 

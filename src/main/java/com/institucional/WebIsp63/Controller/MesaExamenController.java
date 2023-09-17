@@ -1,7 +1,9 @@
 package com.institucional.WebIsp63.Controller;
 
 import com.institucional.WebIsp63.DTO.MesaExamenDTO;
+import com.institucional.WebIsp63.Exception.ResourceNotFoundException;
 import com.institucional.WebIsp63.Service.MesaExamenService;
+import com.institucional.WebIsp63.Service.MesaExamenServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +13,10 @@ import java.util.List;
 @RequestMapping("MesaExamen")
 public class MesaExamenController {
     @Autowired
-    MesaExamenService mesaExamenService = new MesaExamenService();
+    MesaExamenServiceImpl mesaExamenService ;
 
     @GetMapping
-    public List<MesaExamenDTO> finAll(){
+    public List<MesaExamenDTO> finAll() throws ResourceNotFoundException {
         return mesaExamenService.findAll();
     }
 
@@ -24,7 +26,7 @@ public class MesaExamenController {
     }
 
     @GetMapping ("/{id}")
-    public MesaExamenDTO finId(@PathVariable long id){
+    public MesaExamenDTO finId (@PathVariable long id) throws ResourceNotFoundException{
         return mesaExamenService.findId(id);
     }
 
