@@ -37,7 +37,12 @@ public class CarreraServiceImpl {
     }
 
 
-    public List<CarreraDTO> findAll(String sede) throws ResourceNotFoundException{
+    public List<CarreraDTO> findAll() throws ResourceNotFoundException{
+
+        return  carreraMapper.toCarrerasDTO(carreraRepository.findAll());
+
+    }
+    public List<CarreraDTO> findAllBySede(String sede) throws ResourceNotFoundException{
 
         return  carreraMapper.toCarrerasDTO(carreraRepository.findBysedeContaining(sede));
 
