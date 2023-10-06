@@ -23,8 +23,8 @@ public class ImagenService {
         return imagenRepository.findById(id);
     }
 
-    public void save(Imagen imagen){
-        imagenRepository.save(imagen);
+    public Imagen save(Imagen imagen){
+        return imagenRepository.save(imagen);
     }
 
     public void delete(int id){

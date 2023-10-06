@@ -1,19 +1,24 @@
 package com.institucional.WebIsp63.DTO;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
+import lombok.*;
 
 
 @Data
+@NoArgsConstructor
+@Setter
+@Getter
 @AllArgsConstructor
+@Builder
+
 public class CarreraDTO {
 
-    long id;
-    String nombre;
-    String sede;
-    int numeroPlan;
-    String campoOcupacional;
-    String horario;
+    private long id;
+    private String nombre;
+    private String sede;
+    private int numeroPlan;
+    private String campoOcupacional;
+    private String horario;
+    private ImagenDTO imagen;
+
 }

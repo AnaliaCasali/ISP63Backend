@@ -15,9 +15,7 @@ public class NoticiaDTO {
 
 
     String url;
-
     String link;
-
     String NomCreador;
     String becas;
 }

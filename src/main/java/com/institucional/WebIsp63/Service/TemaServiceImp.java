@@ -4,6 +4,7 @@ package com.institucional.WebIsp63.Service;
 
 import com.institucional.WebIsp63.DTO.TemaDTO;
 
+import com.institucional.WebIsp63.Entity.Carrera;
 import com.institucional.WebIsp63.Entity.Tema;
 import com.institucional.WebIsp63.Exception.ResourceNotFoundException;
 
@@ -26,9 +27,10 @@ public class TemaServiceImp {
 
     @Transactional
     public TemaDTO guardartema(TemaDTO temaDTO) {
-        Tema tem = new Tema();
-        tem.setId(temaDTO.getId());
-        tem.setTema(temaDTO.getTema());
+        Tema tema = new Tema();
+        tema.setId(temaDTO.getId());
+        tema.setTema(temaDTO.getTema());
+        temaRepository.save(tema);
         return temaDTO;
     }
 
@@ -48,14 +50,11 @@ public class TemaServiceImp {
     public  void eliminarTema(long id){temaRepository.deleteById(id);}
 
 
-    public TemaDTO modificartema (long id, TemaDTO temaDTO) {
-        Optional<Tema> temaOptional = temaRepository.findById(id);
-        if (temaOptional.isEmpty()) {
-            throw new RuntimeException("Id invalido");
-        }
-        Tema tem = new Tema();
-        tem.setId(temaDTO.getId());
-        tem.setTema(temaDTO.getTema());
+    public TemaDTO modificartema ( TemaDTO temaDTO) {
+        Tema tema = new Tema();
+        tema.setId(temaDTO.getId());
+        tema.setTema(temaDTO.getTema());
+        temaRepository.save(tema);
         return temaDTO;
     }
     public TemaDTO buscar(long id )  throws ResourceNotFoundException {
@@ -70,4 +69,9 @@ public class TemaServiceImp {
         return  temaMapper.toTemaDTO(tema);
 
     }
+
+    public boolean exists (long id){
+        return temaRepository.existsById(id);
+    }
+
 }

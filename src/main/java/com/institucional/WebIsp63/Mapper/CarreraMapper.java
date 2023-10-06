@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-
-
+@Mapper(componentModel = "spring", uses = {ImagenMapper.class})
 public interface CarreraMapper {
-    CarreraMapper Instance=Mappers.getMapper(CarreraMapper.class);
+    static final CarreraMapper Instance=Mappers.getMapper(CarreraMapper.class);
     CarreraDTO toCarreraDTO(Carrera carrera);
 
     Carrera toCarrera(CarreraDTO DTO);
     List<CarreraDTO> toCarrerasDTO(List<Carrera> carreras);
 
-    List<CarreraDTO> toCarreras(List<CarreraDTO> CarrerasDTO);
+    List<Carrera> toCarreras(List<CarreraDTO> CarrerasDTO);
+
 }

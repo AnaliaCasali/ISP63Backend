@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "imagen")
@@ -22,10 +25,4 @@ public class Imagen {
     private String imagenUrl;
     private String imagenId;
 
-    public Imagen(String name, String imagenUrl, String imagenId) {
-        this.name = name;
-        this.imagenUrl = imagenUrl;
-        this.imagenId = imagenId;
-
-    }
 }

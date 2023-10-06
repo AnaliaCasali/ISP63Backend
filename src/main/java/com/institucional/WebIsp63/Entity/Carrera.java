@@ -1,10 +1,9 @@
 package com.institucional.WebIsp63.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 @Entity
@@ -13,6 +12,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Data
 public class Carrera {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +29,12 @@ public class Carrera {
 
     private String horario;
 
-
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "imagen_id", nullable = false)//
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @NonNull
+    @Builder.Default
+    private Imagen imagen=new Imagen();
 
 
 }
