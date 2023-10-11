@@ -8,10 +8,10 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 @org.mapstruct.Mapper(componentModel="Spring")
 public interface AlumnoMapper {
-AlumnoMapper INSTANCE= Mappers.getMapper(AlumnoMapper.class);
-AlumnoDTO toAlumnoDto (Alumno alumno);
-Alumno toAlumno (AlumnoDTO alumnoDTO);
-List<AlumnoDTO> toAlumnosDTO(List<Alumno>alumnos);
-List<Alumno> toAlumnos(List<AlumnoDTO>alumnoDTOS);
+    com.institucional.WebIsp63.Mapper.AlumnoMapper INSTANCE= Mappers.getMapper(com.institucional.WebIsp63.Mapper.AlumnoMapper.class);
+    AlumnoDTO toAlumnoDTO (Alumno alumno);
+    Alumno toAlumno (AlumnoDTO alumnoDTO);
+    List<AlumnoDTO> toAlumnosDTO(List<Alumno>alumnos);
+    List<Alumno> toAlumnos(List<AlumnoDTO>alumnoDTOS);
 
 }

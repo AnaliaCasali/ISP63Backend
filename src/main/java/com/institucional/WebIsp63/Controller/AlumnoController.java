@@ -10,18 +10,24 @@ import java.util.List;
 public class AlumnoController {
     @Autowired
     AlumnoServiceImpl alumnoService=new AlumnoServiceImpl();
-    @GetMapping("/alumno/{nombre}")
-    public List<AlumnoDTO>listarAlumno(@PathVariable String nombre)
-    {return alumnoService.findAllAlumno(nombre);}
-    @PostMapping
-    public AlumnoDTO guardar(@RequestBody AlumnoDTO alumnoDTO){return alumnoService.guardarAlumno(alumnoDTO);}
+    /* @GetMapping("/alumno/{nombre}")
+     public List<AlumnoDTO>listarAlumno(@PathVariable String nombre)
+     {return alumnoService.findAllAlumno(nombre);}*/
+    @GetMapping
+    public List<AlumnoDTO>listarTodos()
+    {return alumnoService.findAll();}
+
     @GetMapping("/{id}")
     public AlumnoDTO buscar (@PathVariable Long id) throws ResourseNotFounException, ResourseNotFounException  {
         return alumnoService.buscar(id);
     }
+    @PostMapping
+    public AlumnoDTO guardar(@RequestBody AlumnoDTO alumnoDTO)
+    {return alumnoService.guardarAlumno(alumnoDTO);}
+
     @PutMapping("/alumno/{id}")
-    public AlumnoDTO modificar (@PathVariable Long id, @RequestBody AlumnoDTO alumno){
-        return  alumnoService.modificarAlumno(alumno);}
+    public AlumnoDTO modificar (@PathVariable Long id, @RequestBody AlumnoDTO alumnoDTO){
+        return  alumnoService.modificarAlumno(id, alumnoDTO);}
     @DeleteMapping("/{id}")
     public void borrar (@PathVariable long id){
         alumnoService.eliminarAlumno(id);

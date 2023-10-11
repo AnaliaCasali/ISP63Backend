@@ -8,8 +8,8 @@ import java.util.List;
 
 @org.mapstruct.Mapper(componentModel="Spring")
 public interface AdministradorMapper {
-    AdministradorMapper INSTANCE = Mappers.getMapper(AdministradorMapper.class);
-    AdministradorDTO toAdministradorDTO (AdministradorDTO administradorDTO);
+    com.institucional.WebIsp63.Mapper.AdministradorMapper INSTANCE = Mappers.getMapper(com.institucional.WebIsp63.Mapper.AdministradorMapper.class);
+    AdministradorDTO toAdministradorDTO (Administrador administrador);
     Administrador toAdministrador (Administrador administrador);
 
     List<AdministradorDTO> toAdministradorsDTO(List<Administrador> administradors);
