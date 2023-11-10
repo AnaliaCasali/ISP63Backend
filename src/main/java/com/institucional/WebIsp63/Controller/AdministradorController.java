@@ -5,7 +5,7 @@ import com.institucional.WebIsp63.DTO.AlumnoDTO;
 import com.institucional.WebIsp63.Excepcion.ResourseNotFounException;
 import com.institucional.WebIsp63.Service.AdministradorService;
 import com.institucional.WebIsp63.Service.AdministradorServiceImpl;
-import com.institucional.WebIsp63.Service.AlumnoServiceImpl;
+import com.institucional.WebIsp63.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -29,6 +29,7 @@ public class AdministradorServiceImpl {
         Administrador admi = new Administrador();
         admi.setPassword(administradorDTO.getPassword());
         admi.setTelefono(administradorDTO.getTelefono());
+
         admi.setId(administradorDTO.getId());
         admi.setCargo(administradorDTO.getCargo());
         admi.setEmail(administradorDTO.getEmail());

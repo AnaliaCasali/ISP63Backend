@@ -1,32 +1,28 @@
 package com.institucional.WebIsp63.Service;
-import com.institucional.WebIsp63.DTO.AdministradorDTO;
 import com.institucional.WebIsp63.DTO.AlumnoDTO;
-import com.institucional.WebIsp63.Entity.Administrador;
 import com.institucional.WebIsp63.Entity.Alumno;
 import com.institucional.WebIsp63.Excepcion.ResourseNotFounException;
 import com.institucional.WebIsp63.Mapper.AlumnoMapper;
+import com.institucional.WebIsp63.Mapper.CarreraMapper;
 import com.institucional.WebIsp63.Repository.AlumnoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 @Service
 public class AlumnoServiceImpl {
     @Autowired
     AlumnoRepository alumnoRepository;
-
     @Autowired
     AlumnoMapper alumnoMapper;
     @Transactional
     public  AlumnoDTO guardarAlumno (AlumnoDTO alumnoDTO) {
         Alumno alumno =new Alumno();
-        alumno.setCarrera(alumnoDTO.getCarrera());
+        alumno.setCarrera(CarreraMapper.Instance.toCarrera( alumnoDTO.getCarrera()));
+        alumno.setEstado(alumnoDTO.isEstado());
         alumno.setId(alumnoDTO.getId());
-        alumno.setEstado(alumnoDTO.getEstado());
-        alumno.setSede(alumnoDTO.getSede());
-        alumno.setIngreso(alumnoDTO.getIngreso());
         alumno.setApellido(alumnoDTO.getApellido());
         alumno.setNombre(alumnoDTO.getNombre());
         alumno.setEmail(alumnoDTO.getEmail());
@@ -36,35 +32,29 @@ public class AlumnoServiceImpl {
         alumnoRepository.save(alumno);
         return alumnoDTO;
     }
-    public  void eliminarAlumno(long id){
+    public  void delete(long id){
         alumnoRepository.deleteById(id);
     }
 
     public List<AlumnoDTO> findAll(){
         return alumnoMapper.toAlumnosDTO(alumnoRepository.findAll());
     }
-    /*public  List<AlumnoDTO> findAllAlumno(String nombre) {
-        return  alumnoRepository.findBynombreContaining(nombre).stream().map(alumno ->
-                        new AlumnoDTO (alumno.getTelefono(),alumno.getNombre(),alumno.getApellido(),alumno.getEmail(),alumno.getDni(),
-                                alumno.getPassword(),alumno.getSede(),alumno.getCarrera(),alumno.getEstado(),alumno.getIngreso())).
-                collect(Collectors.toList());
-    }*/
+
     public AlumnoDTO buscar (long id ) throws ResourseNotFounException {
         Alumno alumno = alumnoRepository.findById(id).orElseThrow(() ->
                 new ResourseNotFounException("alumno con id" + id + "no se encontro"));
         return alumnoMapper.toAlumnoDTO(alumno);
     }
-    public AlumnoDTO modificarAlumno(long id, AlumnoDTO alumnoDTO) {
-        Optional<Alumno> optionalAlumno= alumnoRepository.findById(id);
+    public AlumnoDTO modificarAlumno(AlumnoDTO alumnoDTO) {
+        Optional<Alumno> optionalAlumno= alumnoRepository.findById(alumnoDTO.getId());
         if (optionalAlumno.isEmpty()){
             throw new RuntimeException("id invalido");
         }
         Alumno alumno= optionalAlumno.get();
-        alumno.setCarrera(alumnoDTO.getCarrera());
+        alumno.setCarrera(CarreraMapper.Instance.toCarrera( alumnoDTO.getCarrera()));
+
+        alumno.setEstado(alumnoDTO.isEstado());
         alumno.setId(alumnoDTO.getId());
-        alumno.setEstado(alumnoDTO.getEstado());
-        alumno.setSede(alumnoDTO.getSede());
-        alumno.setIngreso(alumnoDTO.getIngreso());
         alumno.setApellido(alumnoDTO.getApellido());
         alumno.setNombre(alumnoDTO.getNombre());
         alumno.setEmail(alumnoDTO.getEmail());

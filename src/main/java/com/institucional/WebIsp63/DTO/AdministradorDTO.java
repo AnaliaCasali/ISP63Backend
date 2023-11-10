@@ -12,6 +12,6 @@ public class AdministradorDTO  extends PersonaDTO{
     long id;
     String cargo;
 
-    public AdministradorDTO(String cargo, String apellido, String nombre, String email, long dni, long password) {
+    public AdministradorDTO(String cargo, String apellido, String nombre, String email, long dni, String password) {
     }
 }

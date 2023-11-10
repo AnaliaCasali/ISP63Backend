@@ -1,9 +1,11 @@
 package com.institucional.WebIsp63.Controller;
+
 import com.institucional.WebIsp63.DTO.AlumnoDTO;
 import com.institucional.WebIsp63.Excepcion.ResourseNotFounException;
-import com.institucional.WebIsp63.Service.AlumnoServiceImpl;
+import com.institucional.WebIsp63.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 @RestController
 @RequestMapping("/alumno")
@@ -25,12 +27,12 @@ public class AlumnoController {
     public AlumnoDTO guardar(@RequestBody AlumnoDTO alumnoDTO)
     {return alumnoService.guardarAlumno(alumnoDTO);}
 
-    @PutMapping("/alumno/{id}")
-    public AlumnoDTO modificar (@PathVariable Long id, @RequestBody AlumnoDTO alumnoDTO){
-        return  alumnoService.modificarAlumno(id, alumnoDTO);}
+    @PutMapping("/alumno")
+    public AlumnoDTO modificar ( @RequestBody AlumnoDTO alumnoDTO){
+        return  alumnoService.modificarAlumno(alumnoDTO);}
     @DeleteMapping("/{id}")
     public void borrar (@PathVariable long id){
-        alumnoService.eliminarAlumno(id);
+        alumnoService.delete(id);
     }
 
 }

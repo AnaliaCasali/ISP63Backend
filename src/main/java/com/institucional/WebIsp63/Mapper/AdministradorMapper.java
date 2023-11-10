@@ -14,4 +14,6 @@ public interface AdministradorMapper {
 
     List<AdministradorDTO> toAdministradorsDTO(List<Administrador> administradors);
     List<Administrador> toAdministradors (List<AdministradorDTO> administradorDTOS);
+
+    Administrador toAdministrador(AdministradorDTO administrador);
 }

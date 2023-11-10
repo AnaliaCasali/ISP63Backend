@@ -18,6 +18,6 @@ public class Administrador  extends Persona{
     @Column(name = "cargo")
     private String cargo;
 
-    public Administrador(String cargo, String apellido, String nombre, String email, long dni, long password) {
+    public Administrador(String cargo, String apellido, String nombre, String email, long dni, String password) {
     }
 }

@@ -14,21 +14,18 @@ public class Alumno extends Persona {
     /*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  long id;*/
-    private  String sede;
-    @Column (name = "carrera")
-    private String carrera;
-    private  String estado;
-    private String ingreso;
 
+    @ManyToOne ( cascade = CascadeType.PERSIST)
+    @JoinColumn(name="Carrera_id")
+    private Carrera carrera;
 
-    public Alumno(long telefono, String nombre, String apellido, String email, long dni, long password, String sede, String carrera, String estado, String ingreso) {
-        //super(telefono, nombre, apellido, email, dni, password);
-        this.sede = sede;
+    private boolean estado=false;
+    public Alumno(long telefono, String nombre, String apellido, String email, long dni, String password,  Carrera carrera) {
+
         this.carrera = carrera;
-        this.estado = estado;
-        this.ingreso = ingreso;
+
+
 
     }
-    //public Alumno(long telefono, String nombre, String apellido, String email, long dni, long password, long id, String sede, String carrera, String estado, String ingreso) {
 
 }
